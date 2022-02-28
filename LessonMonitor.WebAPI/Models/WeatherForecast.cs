@@ -1,6 +1,6 @@
 using System;
 
-namespace LessonMonitor.WebAPI
+namespace LessonMonitor.WebAPI.Models
 {
     public class WeatherForecast
     {
