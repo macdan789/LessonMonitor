@@ -5,7 +5,7 @@ using System;
 namespace LessonMonitor.WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MemberController : ControllerBase
     {
         private readonly string[] _names = { "Bohdan", "Nazar", "Vasyl", "Roman" };
