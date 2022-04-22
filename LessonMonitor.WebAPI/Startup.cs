@@ -43,6 +43,44 @@ namespace LessonMonitor.WebAPI
 
             app.UseAuthorization();
 
+            #region HOW MiddleWare Pipeline Containers Work
+            //First Pipeline Block
+            app.Use((httpContext, next) =>
+            {
+                //logic before calling next pipeline block
+
+                var nextPipelineContainer = next(); //goes to Second Pipeline Block
+
+                //logic after next pipeline block completing
+
+                return nextPipelineContainer; // return Response after Pipeline Request Processing
+            });
+
+            //Second Pipeline Block
+            app.Use((httpContext, next) =>
+            {
+                //logic before calling next pipeline block
+
+                var nextPipelineContainer = next(); //goes to Third Pipeline Block
+
+                //logic after next pipeline block completing
+
+                return nextPipelineContainer; //return result to First Pipeline Block
+            });
+
+            //Third Pipeline Block
+            app.Use((httpContext, next) =>
+            {
+                //logic before calling next pipeline block
+
+                var nextPipelineContainer = next();
+
+                //logic after next pipeline block completing
+
+                return nextPipelineContainer; //return result to Second Pipeline Block 
+            });
+            #endregion
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
