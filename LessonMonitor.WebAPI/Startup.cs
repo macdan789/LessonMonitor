@@ -1,9 +1,11 @@
+using LessonMonitor.WebAPI.CustomMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace LessonMonitor.WebAPI
 {
@@ -44,6 +46,9 @@ namespace LessonMonitor.WebAPI
             app.UseAuthorization();
 
             #region HOW MiddleWare Pipeline Containers Work
+
+            app.UseMiddleware<InstanceMiddleware>();
+
             //First Pipeline Block
             app.Use((httpContext, next) =>
             {
