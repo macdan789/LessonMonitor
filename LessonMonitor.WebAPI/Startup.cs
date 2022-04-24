@@ -32,64 +32,31 @@ namespace LessonMonitor.WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LessonMonitor.WebAPI v1"));
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LessonMonitor.WebAPI v1"));
+            //}
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
-            app.UseRouting();
+            //app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             #region HOW MiddleWare Pipeline Containers Work
 
-            app.UseMiddleware<InstanceMiddleware>();
+            app.UseMiddleware<InstanceMiddlewareOne>();
+            app.UseMiddleware<InstanceMiddlewareTwo>();
+            app.UseMiddleware<InstanceMiddlewareThree>();
 
-            //First Pipeline Block
-            app.Use((httpContext, next) =>
-            {
-                //logic before calling next pipeline block
-
-                var nextPipelineContainer = next(); //goes to Second Pipeline Block
-
-                //logic after next pipeline block completing
-
-                return nextPipelineContainer; // return Response after Pipeline Request Processing
-            });
-
-            //Second Pipeline Block
-            app.Use((httpContext, next) =>
-            {
-                //logic before calling next pipeline block
-
-                var nextPipelineContainer = next(); //goes to Third Pipeline Block
-
-                //logic after next pipeline block completing
-
-                return nextPipelineContainer; //return result to First Pipeline Block
-            });
-
-            //Third Pipeline Block
-            app.Use((httpContext, next) =>
-            {
-                //logic before calling next pipeline block
-
-                var nextPipelineContainer = next();
-
-                //logic after next pipeline block completing
-
-                return nextPipelineContainer; //return result to Second Pipeline Block 
-            });
             #endregion
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
         }
     }
 }
