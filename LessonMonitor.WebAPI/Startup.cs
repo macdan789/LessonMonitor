@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System.Text;
 
 namespace LessonMonitor.WebAPI
 {
@@ -21,7 +20,6 @@ namespace LessonMonitor.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -32,31 +30,30 @@ namespace LessonMonitor.WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LessonMonitor.WebAPI v1"));
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LessonMonitor.WebAPI v1"));
+            }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-            //app.UseRouting();
+            app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
-            #region HOW MiddleWare Pipeline Containers Work
+            app.UseMiddleware<HeaderHandlerMiddleware>();
+            app.UseMiddleware<RequestLogMiddleware>();
+            // OR I CAN USE CUSTOM EXTENTION METHODS
+            //app.UseHeaderHandlerMiddleware();
+            //app.UseRequestLogMiddleware();
 
-            app.UseMiddleware<InstanceMiddlewareOne>();
-            app.UseMiddleware<InstanceMiddlewareTwo>();
-            app.UseMiddleware<InstanceMiddlewareThree>();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
-            #endregion
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
         }
     }
 }
