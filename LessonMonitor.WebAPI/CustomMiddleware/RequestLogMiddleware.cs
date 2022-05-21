@@ -17,11 +17,11 @@ namespace LessonMonitor.WebAPI.CustomMiddleware
 
         public async Task InvokeAsync(HttpContext context)
         {
-            await File.AppendAllTextAsync("LogFile.txt", $"{DateTime.Now}[Request]{context.Request.Path}\n");
+            await File.AppendAllTextAsync("LogFile.log", $"{DateTime.Now}[Request]{context.Request.Path}\n");
             
             await _next(context);
 
-            await File.AppendAllTextAsync("LogFile.txt", $"{DateTime.Now}[Response]{context.Response.StatusCode}\n");
+            await File.AppendAllTextAsync("LogFile.logs", $"{DateTime.Now}[Response]{context.Response.StatusCode}\n");
         }
     }
 

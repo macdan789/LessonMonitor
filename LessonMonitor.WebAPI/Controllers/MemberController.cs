@@ -19,7 +19,8 @@ namespace LessonMonitor.WebAPI.Controllers
             {
                 MemberID = rnd.Next(0, 500),
                 Age = rnd.Next(10, 20), 
-                Name = _names[rnd.Next(0, _names.Length)],
+                FirstName = _names[rnd.Next(0, _names.Length)],
+                LastName = _names[rnd.Next(0, _names.Length)],
                 Group = new Group()
             });
         }
