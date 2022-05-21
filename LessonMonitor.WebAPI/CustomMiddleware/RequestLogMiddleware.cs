@@ -8,18 +8,18 @@ namespace LessonMonitor.WebAPI.CustomMiddleware
 {
     public class RequestLogMiddleware
     {
-        private readonly RequestDelegate next;
+        private readonly RequestDelegate _next;
 
         public RequestLogMiddleware(RequestDelegate next)
         {
-            this.next = next;
+            _next = next;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
             await File.AppendAllTextAsync("LogFile.txt", $"{DateTime.Now}[Request]{context.Request.Path}\n");
             
-            await this.next(context);
+            await _next(context);
 
             await File.AppendAllTextAsync("LogFile.txt", $"{DateTime.Now}[Response]{context.Response.StatusCode}\n");
         }

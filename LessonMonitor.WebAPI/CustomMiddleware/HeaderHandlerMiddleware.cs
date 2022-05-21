@@ -8,20 +8,20 @@ namespace LessonMonitor.WebAPI.CustomMiddleware
 {
     public class HeaderHandlerMiddleware
     {
-        private readonly RequestDelegate next;
+        private readonly RequestDelegate _next;
 
         public HeaderHandlerMiddleware(RequestDelegate next)
         {
-            this.next = next;
+            _next = next;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
             //should add new custom headers to response before it is formed
-            if (context.Request.Headers.Keys.Any(x => string.Equals(x, "X-Test-Header", StringComparison.OrdinalIgnoreCase)))
+            if (context.Request.Headers.Keys.Any(x => string.Equals(x, "X-Test-Request-Header", StringComparison.OrdinalIgnoreCase)))
                 context.Response.Headers.Add("X-Test-Response-Header", "Hello from Bohdan Marko");
 
-            await this.next(context);
+            await _next(context);
         }
     }
 

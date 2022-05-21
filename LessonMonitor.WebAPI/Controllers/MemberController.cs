@@ -15,7 +15,13 @@ namespace LessonMonitor.WebAPI.Controllers
         {
             var rnd = new Random();
 
-            return Ok(new Member { Age = rnd.Next(10, 20), Name = _names[rnd.Next(0, _names.Length)]});
+            return Ok(new Member 
+            {
+                MemberID = rnd.Next(0, 500),
+                Age = rnd.Next(10, 20), 
+                Name = _names[rnd.Next(0, _names.Length)],
+                Group = new Group()
+            });
         }
     }
 }
