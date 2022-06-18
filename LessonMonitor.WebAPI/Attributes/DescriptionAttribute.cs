@@ -2,6 +2,9 @@
 
 namespace LessonMonitor.WebAPI.Attributes
 {
+    /// <summary>
+    /// Display object description and can be read by using REFLECTION
+    /// </summary>
     public class DescriptionAttribute : Attribute
     {
         private readonly string _description;
