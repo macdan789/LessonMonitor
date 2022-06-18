@@ -2,6 +2,6 @@
 
 public interface IMemberService
 {
-    object GetMember(int memberID);
+    T GetMember<T>(int memberID);
     void CreateMember(object member);
 }

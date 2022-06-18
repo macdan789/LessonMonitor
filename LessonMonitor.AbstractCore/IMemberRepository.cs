@@ -2,7 +2,7 @@
 
 public interface IMemberRepository
 {
-    object GetMember(int memberID);
-    void CreateMember(object member);
+    public object GetMember(int memberID);
+    public void CreateMember(object member);
 
 }

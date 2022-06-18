@@ -20,8 +20,19 @@ public class MemberController : ControllerBase
     [HttpGet("[action]/{memberID}")]
     public IActionResult GetMember(int memberID)
     {
-        var result = service.GetMember(memberID);
-        return Ok();
+        var memberDto = service.GetMember(memberID) as MemberDto;
+        var result = new Member();
+        
+        //Mapping to Member model
+        if(memberDto is not null)
+        {
+            result.MemberID = memberDto.MemberID;
+            result.FirstName = memberDto.FirstName;
+            result.LastName = memberDto.LastName;
+            result.Age = memberDto.Age;
+        }
+
+        return Ok(result);
     }
 
 

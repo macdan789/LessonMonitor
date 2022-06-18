@@ -6,11 +6,19 @@ public class MemberRepository : IMemberRepository
 {
     public void CreateMember(object member)
     {
-        
+        throw new NotImplementedException();
     }
 
     public object GetMember(int memberID)
     {
-        return new object();
+        var member = new MemberEntity()
+        {
+            MemberID = 1,
+            FirstName = "John",
+            LastName = "Doe",
+            Age = 20
+        };
+
+        return member;
     }
 }
