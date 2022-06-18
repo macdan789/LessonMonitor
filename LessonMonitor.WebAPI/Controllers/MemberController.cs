@@ -1,28 +1,34 @@
-﻿using LessonMonitor.WebAPI.Models;
+﻿using LessonMonitor.AbstractCore;
+using LessonMonitor.BusinessLogic;
+using LessonMonitor.DAL;
+using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
-namespace LessonMonitor.WebAPI.Controllers
+namespace LessonMonitor.WebAPI.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class MemberController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class MemberController : ControllerBase
+    private readonly IMemberService service;
+
+    public MemberController()
     {
-        private readonly string[] _names = { "Bohdan", "Nazar", "Vasyl", "Roman" };
+        service = new MemberService();
+    }
+    
+    [HttpGet("[action]/{memberID}")]
+    public IActionResult GetMember(int memberID)
+    {
+        var result = service.GetMember(memberID);
+        return Ok();
+    }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var rnd = new Random();
 
-            return Ok(new Member 
-            {
-                MemberID = rnd.Next(0, 500),
-                Age = rnd.Next(10, 20), 
-                FirstName = _names[rnd.Next(0, _names.Length)],
-                LastName = _names[rnd.Next(0, _names.Length)],
-                Group = new Group()
-            });
-        }
+    [HttpPost("[action]")]
+    public IActionResult CreateMember([FromBody] Member member)
+    {
+        service.CreateMember(member);
+        return Ok();
     }
 }

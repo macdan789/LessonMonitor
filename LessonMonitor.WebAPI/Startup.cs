@@ -45,7 +45,7 @@ namespace LessonMonitor.WebAPI
 
             app.UseMiddleware<HeaderHandlerMiddleware>();
             app.UseMiddleware<RequestLogMiddleware>();
-            // OR I CAN USE CUSTOM EXTENTION METHODS
+            // OR I CAN USE CUSTOM STATIC EXTENTION METHODS
             //app.UseHeaderHandlerMiddleware();
             //app.UseRequestLogMiddleware();
 

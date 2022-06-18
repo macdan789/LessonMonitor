@@ -1,21 +1,14 @@
 ﻿using LessonMonitor.WebAPI.Attributes;
 
-namespace LessonMonitor.WebAPI.Models
+namespace LessonMonitor.WebAPI.Models;
+
+public class Member
 {
-    [Description("Description for class Member")]
-    public class Member
-    {
-        public int MemberID { get; set; }
+    public int MemberID { get; set; }
 
-        [Required]
-        public int Age { get; set; }
+    public int Age { get; set; }
 
-        [Required]
-        public string FirstName { get; set; }
+    public string FirstName { get; set; }
 
-        [Required]
-        public string LastName { get; set; }
-
-        public Group Group { get; set; }
-    }
+    public string LastName { get; set; }
 }
