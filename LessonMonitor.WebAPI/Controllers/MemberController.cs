@@ -1,8 +1,9 @@
-﻿using LessonMonitor.AbstractCore;
-using LessonMonitor.BusinessLogic;
+﻿using LessonMonitor.BusinessLogic.Service;
+using LessonMonitor.BusinessLogic.Model;
 using LessonMonitor.DAL;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using LessonMonitor.AbstractCore.Abstract;
 
 namespace LessonMonitor.WebAPI.Controllers;
 
@@ -33,13 +34,5 @@ public class MemberController : ControllerBase
         }
 
         return Ok(result);
-    }
-
-
-    [HttpPost("[action]")]
-    public IActionResult CreateMember([FromBody] Member member)
-    {
-        service.CreateMember(member);
-        return Ok();
     }
 }

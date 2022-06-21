@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.WebAPI.Models;
+﻿namespace LessonMonitor.BusinessLogic.Model;
 
-public class Group
+public class GroupDto
 {
     public int GroupID { get; set; }
     public string GroupName { get; set; }

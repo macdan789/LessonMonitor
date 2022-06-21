@@ -1,12 +1,10 @@
-﻿using LessonMonitor.AbstractCore;
-using LessonMonitor.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LessonMonitor.AbstractCore.Abstract;
+using LessonMonitor.AbstractCore.AbstractRepository;
+using LessonMonitor.BusinessLogic.Model;
+using LessonMonitor.DAL.Model;
+using LessonMonitor.DAL.Repository;
 
-namespace LessonMonitor.BusinessLogic;
+namespace LessonMonitor.BusinessLogic.Service;
 
 public class MemberService : IMemberService
 {
@@ -15,12 +13,6 @@ public class MemberService : IMemberService
     public MemberService()
     {
         repository = new MemberRepository();
-    }
-
-    public void CreateMember(object member)
-    {
-        repository.CreateMember(member);
-
     }
 
     public object GetMember(int memberID)

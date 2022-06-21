@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.WebAPI.Models;
+﻿namespace LessonMonitor.DAL.Model;
 
-public class Group
+public class GroupEntity
 {
     public int GroupID { get; set; }
     public string GroupName { get; set; }

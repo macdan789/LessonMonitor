@@ -1,13 +1,10 @@
-﻿using LessonMonitor.AbstractCore;
+﻿using LessonMonitor.AbstractCore.AbstractRepository;
+using LessonMonitor.DAL.Model;
 
-namespace LessonMonitor.DAL;
+namespace LessonMonitor.DAL.Repository;
 
 public class MemberRepository : IMemberRepository
 {
-    public void CreateMember(object member)
-    {
-        throw new NotImplementedException();
-    }
 
     public object GetMember(int memberID)
     {
