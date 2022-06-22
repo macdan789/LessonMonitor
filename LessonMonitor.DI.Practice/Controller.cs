@@ -3,17 +3,20 @@
     class UserController : CommonClass
     {
         private readonly UserService _userService;
+        private readonly RepositoryService _repositoryService;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, RepositoryService repositoryService)
         {
             _guid = Guid.NewGuid();
             _userService = userService;
+            _repositoryService = repositoryService;
         }
 
         public override void GetGuid()
         {
             Console.WriteLine(nameof(UserController) + " | " + this._guid);
             _userService.GetGuid();
+            _repositoryService.GetGuid();
         }
     }
 
@@ -31,6 +34,22 @@
         {
             Console.WriteLine(nameof(UserService) + " | " + this._guid);
             _githubClient.GetGuid();
+        }
+    }
+
+    class RepositoryService : CommonClass
+    {
+        private readonly GithubClient _client;
+
+        public RepositoryService(GithubClient client)
+        {
+            _client = client;
+        }
+
+        public override void GetGuid()
+        {
+            Console.WriteLine(nameof(RepositoryService) + " | " + _guid);
+            _client.GetGuid();
         }
     }
 
