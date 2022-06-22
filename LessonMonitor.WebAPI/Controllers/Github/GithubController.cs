@@ -17,7 +17,8 @@ public class GithubController
 
     public GithubController()
     {
-        service = new GithubService();
+        var client = new GitHubClient(new ProductHeaderValue("LessonMonitor", "v1"));
+        service = new GithubService(client);
     }
 
     [HttpGet("[action]/{username}")]

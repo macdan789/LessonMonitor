@@ -5,22 +5,22 @@ namespace LessonMonitor.BusinessLogic.Github;
 
 public class GithubService : IGithubService
 {
-    private readonly IGitHubClient client;
+    private readonly IGitHubClient _client;
 
-    public GithubService()
+    public GithubService(GitHubClient client)
     {
-        client = new GitHubClient(new ProductHeaderValue("LessonMonitor", "v1"));
+        _client = client;
     }
 
     public async Task<User> GetUser(string username)
     {
-        var response = await client.User.Get(username);
+        var response = await _client.User.Get(username);
         return response;
     }
 
     public async Task<IEnumerable<Repository>> GetRepositoriesForUser(string username)
     {
-        var response = await client.Repository.GetAllForUser(username);
+        var response = await _client.Repository.GetAllForUser(username);
         return response;
     }
 }
