@@ -1,3 +1,4 @@
+using LessonMonitor.WebAPI.CustomMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +20,6 @@ namespace LessonMonitor.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -43,10 +43,17 @@ namespace LessonMonitor.WebAPI
 
             app.UseAuthorization();
 
+            app.UseMiddleware<HeaderHandlerMiddleware>();
+            app.UseMiddleware<RequestLogMiddleware>();
+            // OR I CAN USE CUSTOM STATIC EXTENTION METHODS
+            //app.UseHeaderHandlerMiddleware();
+            //app.UseRequestLogMiddleware();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
