@@ -2,7 +2,7 @@
 
 namespace LessonMonitor.WebAPI.Models.Github;
 
-public class User
+public class GithubUser
 {
     public string Bio { get; set; }
     public string Email { get; set; }

@@ -3,6 +3,8 @@ using LessonMonitor.BusinessLogic.Github;
 using LessonMonitor.WebAPI.Mappers;
 using LessonMonitor.WebAPI.Models.Github;
 using Microsoft.AspNetCore.Mvc;
+using Octokit;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LessonMonitor.WebAPI.Controllers.Github;
@@ -19,10 +21,18 @@ public class GithubController
     }
 
     [HttpGet("[action]/{username}")]
-    public async Task<User> GetUser(string username)
+    public async Task<GithubUser> GetUser(string username)
     {
         var userDto = await service.GetUser(username);
 
         return userDto.MapUser();
+    }
+
+    [HttpGet("[action]/{username}")]
+    public async Task<IEnumerable<Repository>> GetRepositoriesForUser(string username)
+    {
+        var repositoriesDto = await service.GetRepositoriesForUser(username);
+
+        return repositoriesDto;
     }
 }

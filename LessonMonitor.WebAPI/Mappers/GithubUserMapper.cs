@@ -1,11 +1,10 @@
 ﻿using LessonMonitor.WebAPI.Models.Github;
-using System;
 
 namespace LessonMonitor.WebAPI.Mappers;
 
 public static class GithubUserMapper
 {
-    public static User MapUser(this Octokit.User input) => new User()
+    public static GithubUser MapUser(this Octokit.User input) => new()
     {
         Bio = input.Bio,
         CreatedAt = input.CreatedAt.DateTime,

@@ -17,4 +17,10 @@ public class GithubService : IGithubService
         var response = await client.User.Get(username);
         return response;
     }
+
+    public async Task<IEnumerable<Repository>> GetRepositoriesForUser(string username)
+    {
+        var response = await client.Repository.GetAllForUser(username);
+        return response;
+    }
 }
