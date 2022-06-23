@@ -1,4 +1,6 @@
-﻿using LessonMonitor.DI.Practice;
+﻿using LessonMonitor.DI.Practice.Controller;
+using LessonMonitor.DI.Practice.Helpers;
+using LessonMonitor.DI.Practice.Service;
 using Microsoft.Extensions.DependencyInjection;
 
 //Custom view how lifetimes works (except Transient yet)
