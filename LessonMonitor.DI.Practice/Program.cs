@@ -10,19 +10,19 @@ using Microsoft.Extensions.DependencyInjection;
 //Add services using ServiceCollection
 var collection = new ServiceCollection();
 
-collection.AddScoped<UserService>();
-collection.AddScoped<RepositoryService>();
+collection.AddScoped<IUserService, UserService>();
+collection.AddScoped<IRepositoryService, RepositoryService>();
 //To see difference between Scoped & Transient just change AddMethod and see in console:
 //1. Scoped: GithubClient will be the same object for both services
 //2. Transiet: GithubCLient will have two different instances for each service
-collection.AddScoped<GithubClient>();
+collection.AddTransient<IGithubClient, GithubClient>();
 
 var provider = collection.BuildServiceProvider();
 
 using(var scope = provider.CreateScope())
 {
-    var userService = scope.ServiceProvider.GetService<UserService>();
-    var repositoryService = scope.ServiceProvider.GetService<RepositoryService>();
+    var userService = scope.ServiceProvider.GetService<IUserService>();
+    var repositoryService = scope.ServiceProvider.GetService<IRepositoryService>();
     var controller = new UserController(userService, repositoryService);
     controller.GetGuid();
 }
@@ -31,8 +31,8 @@ Console.WriteLine();
 
 using (var scope = provider.CreateScope())
 {
-    var userService = scope.ServiceProvider.GetService<UserService>();
-    var repositoryService = scope.ServiceProvider.GetService<RepositoryService>();
+    var userService = scope.ServiceProvider.GetService<IUserService>();
+    var repositoryService = scope.ServiceProvider.GetService<IRepositoryService>();
     var controller = new UserController(userService, repositoryService);
     controller.GetGuid();
 }
