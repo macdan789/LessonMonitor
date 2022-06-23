@@ -1,5 +1,5 @@
-﻿using LessonMonitor.AbstractCore.Abstract;
-using LessonMonitor.AbstractCore.AbstractRepository;
+﻿using LessonMonitor.AbstractCore.AbstractRepository;
+using LessonMonitor.AbstractCore.AbstractService;
 using LessonMonitor.BusinessLogic.Model;
 using LessonMonitor.DAL.Model;
 using LessonMonitor.DAL.Repository;
@@ -8,16 +8,16 @@ namespace LessonMonitor.BusinessLogic.Service;
 
 public class MemberService : IMemberService
 {
-    private readonly IMemberRepository repository;
+    private readonly IMemberRepository _repository;
 
-    public MemberService()
+    public MemberService(IMemberRepository repository)
     {
-        repository = new MemberRepository();
+        _repository = repository;
     }
 
     public object GetMember(int memberID)
     {
-        var memberEntity = repository.GetMember(memberID) as MemberEntity;
+        var memberEntity = _repository.GetMember(memberID) as MemberEntity;
         var memberDto = new MemberDto();
 
         //Mapping to MemberDto model

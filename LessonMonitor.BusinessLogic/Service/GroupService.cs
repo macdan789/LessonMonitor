@@ -8,16 +8,16 @@ namespace LessonMonitor.BusinessLogic.Service;
 
 public class GroupService : IGroupService
 {
-    private readonly IGroupRepository repository;
+    private readonly IGroupRepository _repository;
 
-    public GroupService()
+    public GroupService(IGroupRepository repository)
     {
-        repository = new GroupRepository();
+        _repository = repository;
     }
 
     public object GetGroup(int groupID)
     {
-        var groupEntity = repository.GetGroup(groupID) as GroupEntity;
+        var groupEntity = _repository.GetGroup(groupID) as GroupEntity;
         var groupDto = new GroupDto();
 
         //Mapping to GroupDto model

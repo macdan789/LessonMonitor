@@ -1,4 +1,4 @@
-﻿namespace LessonMonitor.AbstractCore.Abstract;
+﻿namespace LessonMonitor.AbstractCore.AbstractService;
 
 public interface IMemberService
 {
