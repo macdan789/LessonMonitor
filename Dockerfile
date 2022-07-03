@@ -4,7 +4,7 @@ WORKDIR /app
 
 #Copy .csproj files and restores the dependencies and tools of a project. (via Nuget)
 COPY *.csproj ./
-RUN dotent restore
+RUN dotnet restore
 
 #Copy everything else and build
 COPY . ./
