@@ -14,3 +14,9 @@ To build docker image run (flag -t = tag or name for our image):
 docker build -t docker_accout_id/app_name:version .
 
 usefull docs: https://docs.docker.com/samples/dotnetcore/
+
+usefull commands:
+docker images = list images on your machine
+docker ps (-a) = list containers on your machine
+docker run (flag -p for port mapping) name_of_image = run container based on some image
+docker stop container_id = stop running container
