@@ -9,3 +9,8 @@ In scope of OOP paradigme: images are like classes and containers like instances
 Now we can create multiple Docker Containers for our Image on different OS.
 
 .dockerignore - tells Docker Engine which certain files ignore while building Docker Image (for example: bin/ obj/ folders)
+
+To build docker image run (flag -t = tag or name for our image):
+docker build -t docker_accout_id/app_name:version .
+
+usefull docs: https://docs.docker.com/samples/dotnetcore/
