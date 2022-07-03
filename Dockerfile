@@ -15,6 +15,8 @@ COPY LessonMonitor.AbstractCore/. LessonMonitor.AbstractCore/
 COPY LessonMonitor.BusinessLogic/. LessonMonitor.BusinessLogic/
 COPY LessonMonitor.DAL/. LessonMonitor.DAL/
 COPY LessonMonitor.WebAPI/. LessonMonitor.WebAPI/
+
+WORKDIR /app/LessonMonitor.WebAPI
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
