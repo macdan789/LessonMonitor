@@ -1,0 +1,11 @@
+Docker - is a containerization platform, meaning that it enables you to package your applications into images and run them as "containers" on any platform that can run Docker.
+
+In scope of OOP paradigme: images are like classes and containers like instances of these classes.
+
+1. Create Dockerfile for our application
+2. Procces Dockerfile through Docker Engine, which will build Docker Image based on our file
+3. Take our finished Docker Image
+
+Now we can create multiple Docker Containers for our Image on different OS.
+
+.dockerignore - tells Docker Engine which certain files ignore while building Docker Image (for example: bin/ obj/ folders)
