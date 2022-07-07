@@ -1,6 +1,4 @@
 ﻿using LessonMonitor.AbstractCore.AbstractService;
-using LessonMonitor.BusinessLogic.Model;
-using LessonMonitor.BusinessLogic.Service;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +18,7 @@ public class GroupController : Controller
     [HttpGet("[action]/{groupID}")]
     public IActionResult GetGroup(int groupID)
     {
-        var groupDto = _service.GetGroup(groupID) as GroupDto;
+        var groupDto = _service.GetGroup(groupID);
         var result = new Group();
 
         //Mapping to Group model

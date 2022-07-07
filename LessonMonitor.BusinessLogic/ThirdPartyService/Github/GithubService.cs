@@ -1,7 +1,7 @@
-﻿using LessonMonitor.AbstractCore.GithubService;
+﻿using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
 using Octokit;
 
-namespace LessonMonitor.BusinessLogic.Github;
+namespace LessonMonitor.BusinessLogic.ThirdPartyService.Github;
 
 public class GithubService : IGithubService
 {

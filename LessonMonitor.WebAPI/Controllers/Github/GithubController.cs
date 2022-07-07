@@ -1,5 +1,4 @@
-﻿using LessonMonitor.AbstractCore.GithubService;
-using LessonMonitor.BusinessLogic.Github;
+﻿using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
 using LessonMonitor.WebAPI.Mappers;
 using LessonMonitor.WebAPI.Models.Github;
 using Microsoft.AspNetCore.Mvc;

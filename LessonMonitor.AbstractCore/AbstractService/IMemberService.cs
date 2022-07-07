@@ -1,6 +1,8 @@
-﻿namespace LessonMonitor.AbstractCore.AbstractService;
+﻿using LessonMonitor.AbstractCore.DtoModel;
+
+namespace LessonMonitor.AbstractCore.AbstractService;
 
 public interface IMemberService
 {
-    object GetMember(int memberID);
+    MemberDto GetMember(int memberID);
 }

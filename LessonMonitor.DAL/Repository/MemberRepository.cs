@@ -1,14 +1,14 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepository;
-using LessonMonitor.DAL.Model;
+using LessonMonitor.AbstractCore.DboModel;
 
 namespace LessonMonitor.DAL.Repository;
 
 public class MemberRepository : IMemberRepository
 {
 
-    public object GetMember(int memberID)
+    public MemberDbo GetMember(int memberID)
     {
-        var member = new MemberEntity()
+        var member = new MemberDbo()
         {
             MemberID = 1,
             FirstName = "John",

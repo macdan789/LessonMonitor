@@ -1,8 +1,6 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepository;
 using LessonMonitor.AbstractCore.AbstractService;
-using LessonMonitor.BusinessLogic.Model;
-using LessonMonitor.DAL.Model;
-using LessonMonitor.DAL.Repository;
+using LessonMonitor.AbstractCore.DtoModel;
 
 namespace LessonMonitor.BusinessLogic.Service;
 
@@ -15,18 +13,18 @@ public class GroupService : IGroupService
         _repository = repository;
     }
 
-    public object GetGroup(int groupID)
+    public GroupDto GetGroup(int groupID)
     {
-        var groupEntity = _repository.GetGroup(groupID) as GroupEntity;
+        var groupDbo = _repository.GetGroup(groupID);
         var groupDto = new GroupDto();
 
         //Mapping to GroupDto model
-        if (groupEntity is not null)
+        if (groupDbo is not null)
         {
-            groupDto.GroupID = groupEntity.GroupID;
-            groupDto.GroupName = groupEntity.GroupName;
-            groupDto.MemberCount = groupEntity.MemberCount;
-            groupDto.CuratorID = groupEntity.CuratorID;
+            groupDto.GroupID = groupDbo.GroupID;
+            groupDto.GroupName = groupDbo.GroupName;
+            groupDto.MemberCount = groupDbo.MemberCount;
+            groupDto.CuratorID = groupDbo.CuratorID;
         }
 
         return groupDto;

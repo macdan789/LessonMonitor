@@ -1,9 +1,11 @@
-﻿namespace LessonMonitor.DAL.Model;
+﻿namespace LessonMonitor.AbstractCore.DtoModel;
 
-public class MemberEntity
+public class MemberDto
 {
     public int MemberID { get; set; }
     public int Age { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string EmailAddress { get; set; }
+    public int GroupID { get; set; }
 }

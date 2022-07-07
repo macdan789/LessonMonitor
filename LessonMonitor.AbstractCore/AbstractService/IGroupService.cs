@@ -1,6 +1,8 @@
-﻿namespace LessonMonitor.AbstractCore.AbstractService;
+﻿using LessonMonitor.AbstractCore.DtoModel;
+
+namespace LessonMonitor.AbstractCore.AbstractService;
 
 public interface IGroupService
 {
-    object GetGroup(int groupID);
+    GroupDto GetGroup(int groupID);
 }

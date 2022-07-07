@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LessonMonitor.BusinessLogic\LessonMonitor.BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>

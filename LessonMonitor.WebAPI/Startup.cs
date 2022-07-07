@@ -1,8 +1,8 @@
 using LessonMonitor.AbstractCore.AbstractRepository;
 using LessonMonitor.AbstractCore.AbstractService;
-using LessonMonitor.AbstractCore.GithubService;
-using LessonMonitor.BusinessLogic.Github;
+using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
 using LessonMonitor.BusinessLogic.Service;
+using LessonMonitor.BusinessLogic.ThirdPartyService.Github;
 using LessonMonitor.DAL.Repository;
 using LessonMonitor.WebAPI.CustomMiddleware;
 using Microsoft.AspNetCore.Builder;
@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Octokit;
 
 namespace LessonMonitor.WebAPI
 {
@@ -54,8 +53,8 @@ namespace LessonMonitor.WebAPI
 
             app.UseAuthorization();
 
-            app.UseMiddleware<HeaderHandlerMiddleware>();
-            app.UseMiddleware<RequestLogMiddleware>();
+            //app.UseMiddleware<HeaderHandlerMiddleware>();
+            //app.UseMiddleware<RequestLogMiddleware>();
             // OR I CAN USE CUSTOM STATIC EXTENTION METHODS
             //app.UseHeaderHandlerMiddleware();
             //app.UseRequestLogMiddleware();

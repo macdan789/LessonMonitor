@@ -1,6 +1,6 @@
 ﻿using Octokit;
 
-namespace LessonMonitor.AbstractCore.GithubService;
+namespace LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
 
 public interface IGithubService
 {

@@ -1,7 +1,4 @@
-﻿using LessonMonitor.BusinessLogic.Service;
-using LessonMonitor.BusinessLogic.Model;
-using LessonMonitor.DAL;
-using LessonMonitor.WebAPI.Models;
+﻿using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using LessonMonitor.AbstractCore.AbstractService;
 
@@ -21,7 +18,7 @@ public class MemberController : ControllerBase
     [HttpGet("[action]/{memberID}")]
     public IActionResult GetMember(int memberID)
     {
-        var memberDto = _service.GetMember(memberID) as MemberDto;
+        var memberDto = _service.GetMember(memberID);
         var result = new Member();
         
         //Mapping to Member model

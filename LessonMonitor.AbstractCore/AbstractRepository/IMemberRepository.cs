@@ -1,7 +1,9 @@
-﻿namespace LessonMonitor.AbstractCore.AbstractRepository;
+﻿using LessonMonitor.AbstractCore.DboModel;
+
+namespace LessonMonitor.AbstractCore.AbstractRepository;
 
 public interface IMemberRepository
 {
-    object GetMember(int memberID);
+    MemberDbo GetMember(int memberID);
 
 }

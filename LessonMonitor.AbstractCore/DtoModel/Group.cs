@@ -1,4 +1,4 @@
-﻿namespace LessonMonitor.BusinessLogic.Model;
+﻿namespace LessonMonitor.AbstractCore.DtoModel;
 
 public class GroupDto
 {
