@@ -1,13 +1,13 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepository;
-using LessonMonitor.DAL.Model;
+using LessonMonitor.AbstractCore.DboModel;
 
 namespace LessonMonitor.DAL.Repository;
 
 public class GroupRepository : IGroupRepository
 {
-    public object GetGroup(int groupID)
+    public GroupDbo GetGroup(int groupID)
     {
-        var group = new GroupEntity()
+        var group = new GroupDbo()
         {
             GroupID = 1,
             GroupName = "7-A",

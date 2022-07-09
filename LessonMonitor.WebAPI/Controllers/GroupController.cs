@@ -1,6 +1,4 @@
 ﻿using LessonMonitor.AbstractCore.AbstractService;
-using LessonMonitor.BusinessLogic.Model;
-using LessonMonitor.BusinessLogic.Service;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,17 +8,17 @@ namespace LessonMonitor.WebAPI.Controllers;
 [Route("api/[controller]")]
 public class GroupController : Controller
 {
-    private readonly IGroupService service;
+    private readonly IGroupService _service;
 
-    public GroupController()
+    public GroupController(IGroupService service)
     {
-        service = new GroupService();
+        _service = service;
     }
 
     [HttpGet("[action]/{groupID}")]
     public IActionResult GetGroup(int groupID)
     {
-        var groupDto = service.GetGroup(groupID) as GroupDto;
+        var groupDto = _service.GetGroup(groupID);
         var result = new Group();
 
         //Mapping to Group model

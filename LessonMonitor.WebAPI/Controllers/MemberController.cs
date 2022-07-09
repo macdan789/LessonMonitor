@@ -1,9 +1,6 @@
-﻿using LessonMonitor.BusinessLogic.Service;
-using LessonMonitor.BusinessLogic.Model;
-using LessonMonitor.DAL;
-using LessonMonitor.WebAPI.Models;
+﻿using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using LessonMonitor.AbstractCore.Abstract;
+using LessonMonitor.AbstractCore.AbstractService;
 
 namespace LessonMonitor.WebAPI.Controllers;
 
@@ -11,17 +8,17 @@ namespace LessonMonitor.WebAPI.Controllers;
 [Route("api/[controller]")]
 public class MemberController : ControllerBase
 {
-    private readonly IMemberService service;
+    private readonly IMemberService _service;
 
-    public MemberController()
+    public MemberController(IMemberService service)
     {
-        service = new MemberService();
+        _service = service;
     }
     
     [HttpGet("[action]/{memberID}")]
     public IActionResult GetMember(int memberID)
     {
-        var memberDto = service.GetMember(memberID) as MemberDto;
+        var memberDto = _service.GetMember(memberID);
         var result = new Member();
         
         //Mapping to Member model

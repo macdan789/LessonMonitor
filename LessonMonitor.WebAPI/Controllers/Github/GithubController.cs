@@ -1,5 +1,4 @@
-﻿using LessonMonitor.AbstractCore.GithubService;
-using LessonMonitor.BusinessLogic.Github;
+﻿using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
 using LessonMonitor.WebAPI.Mappers;
 using LessonMonitor.WebAPI.Models.Github;
 using Microsoft.AspNetCore.Mvc;
@@ -13,18 +12,17 @@ namespace LessonMonitor.WebAPI.Controllers.Github;
 [Route("api/[controller]")]
 public class GithubController
 {
-    private readonly IGithubService service;
+    private readonly IGithubService _service;
 
-    public GithubController()
+    public GithubController(IGithubService service)
     {
-        var client = new GitHubClient(new ProductHeaderValue("LessonMonitor", "v1"));
-        service = new GithubService(client);
+        _service = service;
     }
 
     [HttpGet("[action]/{username}")]
     public async Task<GithubUser> GetUser(string username)
     {
-        var userDto = await service.GetUser(username);
+        var userDto = await _service.GetUser(username);
 
         return userDto.MapUser();
     }
@@ -32,7 +30,7 @@ public class GithubController
     [HttpGet("[action]/{username}")]
     public async Task<IEnumerable<Repository>> GetRepositoriesForUser(string username)
     {
-        var repositoriesDto = await service.GetRepositoriesForUser(username);
+        var repositoriesDto = await _service.GetRepositoriesForUser(username);
 
         return repositoriesDto;
     }

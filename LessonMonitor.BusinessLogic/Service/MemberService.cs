@@ -1,32 +1,30 @@
-﻿using LessonMonitor.AbstractCore.Abstract;
-using LessonMonitor.AbstractCore.AbstractRepository;
-using LessonMonitor.BusinessLogic.Model;
-using LessonMonitor.DAL.Model;
-using LessonMonitor.DAL.Repository;
+﻿using LessonMonitor.AbstractCore.AbstractRepository;
+using LessonMonitor.AbstractCore.AbstractService;
+using LessonMonitor.AbstractCore.DtoModel;
 
 namespace LessonMonitor.BusinessLogic.Service;
 
 public class MemberService : IMemberService
 {
-    private readonly IMemberRepository repository;
+    private readonly IMemberRepository _repository;
 
-    public MemberService()
+    public MemberService(IMemberRepository repository)
     {
-        repository = new MemberRepository();
+        _repository = repository;
     }
 
-    public object GetMember(int memberID)
+    public MemberDto GetMember(int memberID)
     {
-        var memberEntity = repository.GetMember(memberID) as MemberEntity;
+        var memberDbo = _repository.GetMember(memberID);
         var memberDto = new MemberDto();
 
         //Mapping to MemberDto model
-        if (memberEntity is not null)
+        if (memberDbo is not null)
         {
-            memberDto.MemberID = memberEntity.MemberID;
-            memberDto.FirstName = memberEntity.FirstName;
-            memberDto.LastName = memberEntity.LastName;
-            memberDto.Age = memberEntity.Age;
+            memberDto.MemberID = memberDbo.MemberID;
+            memberDto.FirstName = memberDbo.FirstName;
+            memberDto.LastName = memberDbo.LastName;
+            memberDto.Age = memberDbo.Age;
         }
 
         return memberDto;

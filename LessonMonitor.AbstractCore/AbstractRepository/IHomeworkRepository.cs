@@ -2,7 +2,7 @@
 
 namespace LessonMonitor.AbstractCore.AbstractRepository;
 
-public interface IGroupRepository
+public interface IHomeworkRepository
 {
-    GroupDbo GetGroup(int groupID);
+    void Insert(HomeworkDbo homework);
 }

@@ -1,3 +1,9 @@
+using LessonMonitor.AbstractCore.AbstractRepository;
+using LessonMonitor.AbstractCore.AbstractService;
+using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
+using LessonMonitor.BusinessLogic.Service;
+using LessonMonitor.BusinessLogic.ThirdPartyService.Github;
+using LessonMonitor.DAL.Repository;
 using LessonMonitor.WebAPI.CustomMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +31,10 @@ namespace LessonMonitor.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LessonMonitor.WebAPI", Version = "v1" });
             });
+
+            AddScoped(services);
+            AddTransient(services);
+            AddSingleton(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,8 +53,8 @@ namespace LessonMonitor.WebAPI
 
             app.UseAuthorization();
 
-            app.UseMiddleware<HeaderHandlerMiddleware>();
-            app.UseMiddleware<RequestLogMiddleware>();
+            //app.UseMiddleware<HeaderHandlerMiddleware>();
+            //app.UseMiddleware<RequestLogMiddleware>();
             // OR I CAN USE CUSTOM STATIC EXTENTION METHODS
             //app.UseHeaderHandlerMiddleware();
             //app.UseRequestLogMiddleware();
@@ -54,6 +64,23 @@ namespace LessonMonitor.WebAPI
                 endpoints.MapControllers();
             });
 
+        }
+
+        private void AddScoped(IServiceCollection services)
+        {
+            services.AddSingleton<IGroupRepository, GroupRepository>();
+            services.AddSingleton<IMemberRepository, MemberRepository>();
+        }
+
+        private void AddTransient(IServiceCollection services)
+        {
+            services.AddTransient<IGithubService, GithubService>();
+        }
+
+        private void AddSingleton(IServiceCollection services)
+        {
+            services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<IMemberService, MemberService>();
         }
     }
 }

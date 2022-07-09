@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.DAL.Model;
+﻿namespace LessonMonitor.AbstractCore.DboModel;
 
-public class GroupEntity
+public class GroupDbo
 {
     public int GroupID { get; set; }
     public string GroupName { get; set; }
