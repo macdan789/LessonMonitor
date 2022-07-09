@@ -21,11 +21,11 @@ public class HomeworkController : Controller
     public IActionResult CreateHomework([FromBody] Homework homework)
     {
         //Simple Mapping
-        var homeworkDto = new HomeworkDto 
-        { 
-            Title = homework.Title, 
-            Subject = homework.Subject, 
-            TeacherID = homework.TeacherID 
+        var homeworkDto = new HomeworkDto
+        {
+            Title = homework.Title,
+            Subject = homework.Subject,
+            TeacherID = homework.TeacherID
         };
 
         var check = _homeworkService.Create(homeworkDto);
