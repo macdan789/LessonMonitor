@@ -70,6 +70,7 @@ namespace LessonMonitor.WebAPI
         {
             services.AddSingleton<IGroupRepository, GroupRepository>();
             services.AddSingleton<IMemberRepository, MemberRepository>();
+            services.AddSingleton<IHomeworkRepository, HomeworkRepository>();
         }
 
         private void AddTransient(IServiceCollection services)
@@ -81,6 +82,7 @@ namespace LessonMonitor.WebAPI
         {
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<IMemberService, MemberService>();
+            services.AddScoped<IHomeworkService, HomeworkService>();
         }
     }
 }

@@ -5,8 +5,9 @@ namespace LessonMonitor.DAL.Repository;
 
 public class HomeworkRepository : IHomeworkRepository
 {
-    public void Insert(HomeworkDbo homework)
+    public bool Insert(HomeworkDbo homework)
     {
         //Do some logic to save object in database
+        return true;
     }
 }

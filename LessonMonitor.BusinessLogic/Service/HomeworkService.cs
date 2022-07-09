@@ -1,9 +1,10 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepository;
+using LessonMonitor.AbstractCore.AbstractService;
 using LessonMonitor.AbstractCore.DboModel;
 
 namespace LessonMonitor.BusinessLogic.Service;
 
-public class HomeworkService
+public class HomeworkService : IHomeworkService
 {
     private readonly IHomeworkRepository _homeworkRepository;
 
@@ -12,16 +13,11 @@ public class HomeworkService
         _homeworkRepository = homeworkRepository;
     }
 
-    public HomeworkDto Create(string title, string subject, int teacherID)
+    public bool Create(HomeworkDto homeworkDto) 
     {
-        var result = new HomeworkDto { Title = title, Subject = subject, TeacherID = teacherID };
-
-        //Map from dto to dbo object
-        var homeworkDbo = new HomeworkDbo { Title = title, Subject = subject, TeacherID = teacherID };
-
         //Save created dbo in database
-        _homeworkRepository.Insert(homeworkDbo);
+        var check = _homeworkRepository.Insert(new HomeworkDbo());
 
-        return result;
+        return check;
     }
 }

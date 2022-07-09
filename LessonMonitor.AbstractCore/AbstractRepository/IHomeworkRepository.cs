@@ -4,5 +4,5 @@ namespace LessonMonitor.AbstractCore.AbstractRepository;
 
 public interface IHomeworkRepository
 {
-    void Insert(HomeworkDbo homework);
+    bool Insert(HomeworkDbo homework);
 }
