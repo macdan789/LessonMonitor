@@ -29,6 +29,6 @@ public class HeaderHandlerMiddleware
 
 public static class HeaderHandlerMiddlewareExtention
 {
-    public static void UseHeaderHandlerMiddleware(this IApplicationBuilder app) 
+    public static void UseHeaderHandlerMiddleware(this IApplicationBuilder app)
         => app.UseMiddleware<HeaderHandlerMiddleware>();
 }

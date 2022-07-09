@@ -13,7 +13,7 @@ public class HomeworkService : IHomeworkService
         _homeworkRepository = homeworkRepository;
     }
 
-    public bool Create(HomeworkDto homeworkDto) 
+    public bool Create(HomeworkDto homeworkDto)
     {
         //Save created dbo in database
         var check = _homeworkRepository.Insert(new HomeworkDbo());

@@ -4,7 +4,6 @@ using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
 using LessonMonitor.BusinessLogic.Service;
 using LessonMonitor.BusinessLogic.ThirdPartyService.Github;
 using LessonMonitor.DAL.Repository;
-using LessonMonitor.WebAPI.CustomMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

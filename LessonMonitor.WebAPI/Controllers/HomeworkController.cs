@@ -1,5 +1,6 @@
 ﻿using LessonMonitor.AbstractCore.AbstractService;
 using LessonMonitor.AbstractCore.DboModel;
+using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LessonMonitor.WebAPI.Controllers;
@@ -17,8 +18,16 @@ public class HomeworkController : Controller
 
     [HttpPost]
     [Route("[action]")]
-    public IActionResult CreateHomework([FromBody] HomeworkDto homeworkDto)
+    public IActionResult CreateHomework([FromBody] Homework homework)
     {
+        //Simple Mapping
+        var homeworkDto = new HomeworkDto 
+        { 
+            Title = homework.Title, 
+            Subject = homework.Subject, 
+            TeacherID = homework.TeacherID 
+        };
+
         var check = _homeworkService.Create(homeworkDto);
 
         if (check)

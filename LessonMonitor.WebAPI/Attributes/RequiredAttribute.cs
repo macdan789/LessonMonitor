@@ -6,7 +6,7 @@ public class RequiredAttribute : ValidationAttribute
 {
     public RequiredAttribute()
     {
-        
+
     }
 
     public override bool IsValid(object value) => this.IsValid_FirstExample(value);

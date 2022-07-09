@@ -18,10 +18,10 @@ public class RequestLogMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         await File.AppendAllTextAsync("LogFile.log", $"{DateTime.Now}[Request]{context.Request.Path}\n");
-        
+
         await _next(context);
 
-        await File.AppendAllTextAsync("LogFile.log", $"{DateTime.Now}[Response]{context.Response.StatusCode}\n");
+        await File.AppendAllTextAsync("LogFile.log", $"{DateTime.Now}[Response]{context.Request.Path} Status:{context.Response.StatusCode}\n");
     }
 }
 

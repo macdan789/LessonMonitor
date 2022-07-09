@@ -1,6 +1,4 @@
-﻿using LessonMonitor.WebAPI.Attributes;
-
-namespace LessonMonitor.WebAPI.Models;
+﻿namespace LessonMonitor.WebAPI.Models;
 
 public class Member
 {
