@@ -1,5 +1,4 @@
 ﻿using LessonMonitor.AbstractCore.AbstractServices;
-using LessonMonitor.AbstractCore.Models.DTO;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
