@@ -9,6 +9,26 @@ namespace LessonMonitor.BusinessLogic.MSTests;
 [TestClass]
 public class HomeworkServiceTests
 {
+    private Guid _guidCtor;
+    private Guid _guidInit;
+
+    /*
+     * Mechanism is creating new instance of Test class for each Test Method in our class,
+     * so we have lifetime for instance in scope of one Test Method
+     */
+    public HomeworkServiceTests()
+    {
+        _guidCtor = Guid.NewGuid();
+        Console.WriteLine($"{_guidCtor} Ctor");
+    }
+
+    [TestInitialize]
+    public void Initialize()
+    {
+        _guidInit = Guid.NewGuid();
+        Console.WriteLine($"{_guidInit} Initialize");
+    }
+
     [TestMethod]
     public void Create_HomeworkIsValid_Success()
     {
@@ -23,7 +43,6 @@ public class HomeworkServiceTests
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         homeworkRepositoryMock.Verify(x => x.Insert(It.IsAny<HomeworkDbo>()), Times.Once);
     }
-
 
     [TestMethod]
     public void Update_HomeworkIsNull_ThrowException()
