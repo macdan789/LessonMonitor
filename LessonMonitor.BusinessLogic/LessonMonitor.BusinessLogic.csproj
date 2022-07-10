@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LessonMonitor.AbstractCore\LessonMonitor.AbstractCore.csproj" />
-    <ProjectReference Include="..\LessonMonitor.DAL\LessonMonitor.DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using LessonMonitor.AbstractCore.ThirdPartyService.GithubService;
-using LessonMonitor.WebAPI.Mappers;
-using LessonMonitor.WebAPI.Models.Github;
+﻿using LessonMonitor.AbstractCore.ThirdPartyServices.GithubService;
 using Microsoft.AspNetCore.Mvc;
 using Octokit;
 using System.Collections.Generic;
@@ -19,16 +17,18 @@ public class GithubController
         _service = service;
     }
 
+
     [HttpGet("[action]/{username}")]
-    public async Task<GithubUser> GetUser(string username)
+    public async Task<User> GetUser(string username)
     {
         var userDto = await _service.GetUser(username);
 
-        return userDto.MapUser();
+        return userDto;
     }
 
+
     [HttpGet("[action]/{username}")]
-    public async Task<IEnumerable<Repository>> GetRepositoriesForUser(string username)
+    public async Task<IEnumerable<Repository>> GetRepositories(string username)
     {
         var repositoriesDto = await _service.GetRepositoriesForUser(username);
 

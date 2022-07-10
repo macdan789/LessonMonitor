@@ -1,5 +1,5 @@
-﻿using LessonMonitor.AbstractCore.AbstractService;
-using LessonMonitor.AbstractCore.DboModel;
+﻿using LessonMonitor.AbstractCore.AbstractServices;
+using LessonMonitor.AbstractCore.Models.DTO;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,30 +9,28 @@ namespace LessonMonitor.WebAPI.Controllers;
 [Route("api/[controller]")]
 public class HomeworkController : Controller
 {
-    private readonly IHomeworkService _homeworkService;
+    private readonly IHomeworkService _service;
 
-    public HomeworkController(IHomeworkService homeworkService)
+    public HomeworkController(IHomeworkService service)
     {
-        _homeworkService = homeworkService;
+        _service = service;
     }
 
-    [HttpPost]
-    [Route("[action]")]
-    public IActionResult CreateHomework([FromBody] Homework homework)
+
+    [HttpGet()]
+    [Route("[action]/{homeworkID}")]
+    public ActionResult<Homework> GetHomework(int homeworkID)
     {
-        //Simple Mapping
-        var homeworkDto = new HomeworkDto
+        var homeworkDto = _service.Get(homeworkID);
+
+        //Mapping
+        var result = new Homework
         {
-            Title = homework.Title,
-            Subject = homework.Subject,
-            TeacherID = homework.TeacherID
+            Subject = homeworkDto.Subject,
+            Title = homeworkDto.Title,
+            TeacherID = homeworkDto.TeacherID
         };
 
-        var check = _homeworkService.Create(homeworkDto);
-
-        if (check)
-            return Ok();
-        else
-            return BadRequest();
+        return Ok(result);
     }
 }

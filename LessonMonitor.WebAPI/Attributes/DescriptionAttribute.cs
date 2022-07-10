@@ -3,7 +3,7 @@
 namespace LessonMonitor.WebAPI.Attributes;
 
 /// <summary>
-/// Display object description and can be read by using REFLECTION
+/// Display object description and can be read via REFLECTION
 /// </summary>
 public class DescriptionAttribute : Attribute
 {

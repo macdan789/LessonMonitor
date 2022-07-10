@@ -1,4 +1,4 @@
-﻿using LessonMonitor.AbstractCore.AbstractService;
+﻿using LessonMonitor.AbstractCore.AbstractServices;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,20 +15,22 @@ public class MemberController : ControllerBase
         _service = service;
     }
 
-    [HttpGet("[action]/{memberID}")]
-    public IActionResult GetMember(int memberID)
-    {
-        var memberDto = _service.GetMember(memberID);
-        var result = new Member();
 
-        //Mapping to Member model
-        if (memberDto is not null)
-        {
-            result.MemberID = memberDto.MemberID;
-            result.FirstName = memberDto.FirstName;
-            result.LastName = memberDto.LastName;
-            result.Age = memberDto.Age;
-        }
+    [HttpGet("[action]/{memberID}")]
+    public ActionResult<Member> GetMember(int memberID)
+    {
+        var memberDto = _service.Get(memberID);
+
+        //Mapping
+        var result = new Member 
+        { 
+            MemberID = memberID, 
+            FirstName = memberDto.FirstName,
+            LastName = memberDto.LastName,
+            EmailAddress = memberDto.EmailAddress,
+            Age = memberDto.Age,
+            GroupID = memberDto.GroupID
+        };
 
         return Ok(result);
     }
