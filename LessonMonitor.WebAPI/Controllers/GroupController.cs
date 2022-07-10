@@ -1,4 +1,4 @@
-﻿using LessonMonitor.AbstractCore.AbstractService;
+﻿using LessonMonitor.AbstractCore.AbstractServices;
 using LessonMonitor.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,20 +15,20 @@ public class GroupController : Controller
         _service = service;
     }
 
-    [HttpGet("[action]/{groupID}")]
-    public IActionResult GetGroup(int groupID)
-    {
-        var groupDto = _service.GetGroup(groupID);
-        var result = new Group();
 
-        //Mapping to Group model
-        if (groupDto is not null)
+    [HttpGet("[action]/{groupID}")]
+    public ActionResult<Group> GetGroup(int groupID)
+    {
+        var groupDto = _service.Get(groupID);
+
+        //Mapping
+        var result = new Group
         {
-            result.GroupID = groupDto.GroupID;
-            result.GroupName = groupDto.GroupName;
-            result.MemberCount = groupDto.MemberCount;
-            result.CuratorID = groupDto.CuratorID;
-        }
+            GroupID = groupDto.GroupID,
+            GroupName = groupDto.GroupName,
+            MemberCount = groupDto.MemberCount,
+            CuratorID = groupDto.CuratorID
+        };
 
         return Ok(result);
     }

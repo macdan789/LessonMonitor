@@ -1,8 +1,6 @@
-﻿using System;
+﻿namespace LessonMonitor.AbstractCore.Models.DTO;
 
-namespace LessonMonitor.WebAPI.Models;
-
-public class Lesson
+public class LessonDto
 {
     public int LessonID { get; set; }
     public string LessonName { get; set; }

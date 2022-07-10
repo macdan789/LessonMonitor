@@ -1,8 +1,6 @@
-﻿using System;
+﻿namespace LessonMonitor.AbstractCore.Models.DBO;
 
-namespace LessonMonitor.WebAPI.Models;
-
-public class Lesson
+public class LessonDbo
 {
     public int LessonID { get; set; }
     public string LessonName { get; set; }

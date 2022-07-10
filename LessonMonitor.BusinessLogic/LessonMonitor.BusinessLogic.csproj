@@ -6,13 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Octokit" Version="0.51.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LessonMonitor.AbstractCore\LessonMonitor.AbstractCore.csproj" />
-    <ProjectReference Include="..\LessonMonitor.DAL\LessonMonitor.DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.WebAPI.Models;
+﻿namespace LessonMonitor.AbstractCore.Models.DBO;
 
-public class Member
+public class MemberDbo
 {
     public int MemberID { get; set; }
     public int Age { get; set; }
