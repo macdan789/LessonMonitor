@@ -1,6 +1,7 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepository;
 using LessonMonitor.AbstractCore.DboModel;
 using LessonMonitor.BusinessLogic.Service;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 namespace LessonMonitor.BusinessLogic.MSTests;
@@ -9,10 +10,9 @@ namespace LessonMonitor.BusinessLogic.MSTests;
 public class HomeworkServiceTests
 {
     [TestMethod]
-    public void Create_Homework_Success()
+    public void Create_HomeworkIsValid_Success()
     {
         // arrange - готуємо вхідні дані для тестування
-        var custom_homeworkRepositoryMock = new HomeworkRepositoryMock();
         var homeworkRepositoryMock = new Mock<IHomeworkRepository>();
 
         var homeworkService = new HomeworkService(homeworkRepositoryMock.Object);
@@ -23,14 +23,39 @@ public class HomeworkServiceTests
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         homeworkRepositoryMock.Verify(x => x.Insert(It.IsAny<HomeworkDbo>()), Times.Once);
     }
-}
 
-//Mock object - is a fake item that implements logic of main object
-internal class HomeworkRepositoryMock : IHomeworkRepository
-{
-    public bool Insert(HomeworkDbo homework)
+
+    [TestMethod]
+    public void Update_HomeworkIsNull_ThrowException()
     {
-        Console.WriteLine("Object was saved in database.");
-        return true;
+        // arrange - готуємо вхідні дані для тестування
+        var homeworkRepositoryMock = new Mock<IHomeworkRepository>();
+        var homeworkService = new HomeworkService(homeworkRepositoryMock.Object);
+        HomeworkDto homeworkDto = null;
+        bool result = false;
+
+        // act - запускаємо метод для тесту
+        // assert - порівнюємо/валідуємо очікуваний та реальний результат
+        Assert.IsNull(homeworkDto);
+        Assert.ThrowsException<ArgumentNullException>(() => result = homeworkService.Update(homeworkDto));
+        Assert.IsFalse(result);
     }
+
+    [TestMethod]
+    public void Update_HomeworkIsValid_Success()
+    {
+        // arrange - готуємо вхідні дані для тестування
+        var homeworkRepositoryMock = new Mock<IHomeworkRepository>();
+        var homeworkService = new HomeworkService(homeworkRepositoryMock.Object);
+        HomeworkDto homeworkDto = new HomeworkDto();
+        bool result = false;
+
+        // act - запускаємо метод для тесту
+        result = homeworkService.Update(homeworkDto);
+
+        // assert - порівнюємо/валідуємо очікуваний та реальний результат
+        Assert.IsNotNull(homeworkDto);
+        Assert.IsTrue(result);
+    }
+
 }
