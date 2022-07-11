@@ -1,4 +1,4 @@
-﻿namespace LessonMonitor.WebAPI.Models;
+﻿namespace LessonMonitor.AbstractCore.Models.Presentation;
 
 public class Teacher
 {

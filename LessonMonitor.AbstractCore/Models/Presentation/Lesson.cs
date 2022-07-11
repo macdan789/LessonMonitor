@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LessonMonitor.WebAPI.Models;
+﻿namespace LessonMonitor.AbstractCore.Models.Presentation;
 
 public class Lesson
 {

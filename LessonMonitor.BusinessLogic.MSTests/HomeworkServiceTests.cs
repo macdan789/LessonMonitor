@@ -1,8 +1,8 @@
 ﻿using AutoFixture;
 using LessonMonitor.AbstractCore.AbstractRepositories;
-using LessonMonitor.AbstractCore.Exceptions;
 using LessonMonitor.AbstractCore.Models.DBO;
 using LessonMonitor.AbstractCore.Models.DTO;
+using LessonMonitor.BusinessLogic.Exceptions;
 using LessonMonitor.BusinessLogic.Services;
 using Moq;
 

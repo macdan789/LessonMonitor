@@ -1,4 +1,4 @@
-﻿namespace LessonMonitor.AbstractCore.Exceptions;
+﻿namespace LessonMonitor.BusinessLogic.Exceptions;
 
 public class BusinessException : Exception
 {

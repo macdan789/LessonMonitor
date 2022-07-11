@@ -1,5 +1,5 @@
 ﻿using LessonMonitor.AbstractCore.AbstractServices;
-using LessonMonitor.WebAPI.Models;
+using LessonMonitor.AbstractCore.Models.Presentation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LessonMonitor.WebAPI.Controllers;
