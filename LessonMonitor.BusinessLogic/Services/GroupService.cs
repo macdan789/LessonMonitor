@@ -1,6 +1,6 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepositories;
 using LessonMonitor.AbstractCore.AbstractServices;
-using LessonMonitor.AbstractCore.Models.DTO;
+using LessonMonitor.AbstractCore.Models.Presentation;
 
 namespace LessonMonitor.BusinessLogic.Services;
 
@@ -13,7 +13,7 @@ public class GroupService : IGroupService
         _repository = repository;
     }
 
-    public bool Create(GroupDto entity)
+    public bool Create(Group entity)
     {
         throw new NotImplementedException();
     }
@@ -23,17 +23,17 @@ public class GroupService : IGroupService
         throw new NotImplementedException();
     }
 
-    public GroupDto Get(int entityID)
+    public Group Get(int entityID)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<GroupDto> GetAll()
+    public IEnumerable<Group> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public bool Update(GroupDto entity)
+    public bool Update(Group entity)
     {
         throw new NotImplementedException();
     }

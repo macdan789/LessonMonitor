@@ -1,8 +1,8 @@
-﻿using LessonMonitor.AbstractCore.Models.DTO;
+﻿using LessonMonitor.AbstractCore.Models.Presentation;
 
 namespace LessonMonitor.AbstractCore.AbstractServices;
 
-public interface ILessonService : IService<LessonDto>
+public interface ILessonService : IService<Lesson>
 {
 
 }

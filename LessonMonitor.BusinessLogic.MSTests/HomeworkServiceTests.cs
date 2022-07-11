@@ -2,6 +2,7 @@
 using LessonMonitor.AbstractCore.AbstractRepositories;
 using LessonMonitor.AbstractCore.Models.DBO;
 using LessonMonitor.AbstractCore.Models.DTO;
+using LessonMonitor.AbstractCore.Models.Presentation;
 using LessonMonitor.BusinessLogic.Exceptions;
 using LessonMonitor.BusinessLogic.Services;
 using Moq;
@@ -39,65 +40,29 @@ public class HomeworkServiceTests
     }
 
 
-    [TestCleanup]
     [TestMethod]
     public void CreateHomework_HomeworkIsValid_Success()
     {
         // arrange - готуємо вхідні дані для тестування
         //via Constructor
+        Fixture fixture = new Fixture();
+        Homework homework = fixture.Build<Homework>().Create();
 
         // act - запускаємо метод для тесту
-        var result = _homeworkService.Create(new HomeworkDto { Subject = "subject", Title = "title", TeacherID = 111 });
+        var result = _homeworkService.Create(homework);
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
+        Assert.IsNotNull(homework);
         _homeworkRepositoryMock.Verify(x => x.Create(It.IsAny<HomeworkDbo>()), Times.Once);
     }
 
 
-    [TestCleanup]
-    [TestMethod]
-    public void UpdateHomework_HomeworkIsNull_ThrowException()
-    {
-        // arrange - готуємо вхідні дані для тестування
-        HomeworkDto homeworkDto = null;
-        bool result = false;
-
-        // act - запускаємо метод для тесту
-        var excpectedException = Assert.ThrowsException<ArgumentNullException>(() => result = _homeworkService.Update(homeworkDto));
-
-        // assert - порівнюємо/валідуємо очікуваний та реальний результат
-        Assert.IsNull(homeworkDto);
-        Assert.IsFalse(result);
-        Assert.IsNotNull(excpectedException);
-    }
-
-
-    [TestCleanup]
-    [TestMethod]
-    public void UpdateHomework_HomeworkIsValid_Success()
-    {
-        // arrange - готуємо вхідні дані для тестування
-        HomeworkDto homeworkDto = new HomeworkDto();
-
-        // act - запускаємо метод для тесту
-        var result = _homeworkService.Update(homeworkDto);
-
-        // assert - порівнюємо/валідуємо очікуваний та реальний результат
-        Assert.IsNotNull(homeworkDto);
-        Assert.IsTrue(result);
-    }
-
-
-    [TestCleanup]
     [TestMethod]
     public void CreateHomework_HomeworkIsInvalid_ThrowException()
     {
         //arrange
-        var fixture = new Fixture();
-        var homework = fixture.Build<HomeworkDto>()
-            .Without(x => x.TeacherID)
-            .Create();
-
+        Fixture fixture = new Fixture();
+        Homework homework = fixture.Build<Homework>().Without(x => x.TeacherID).Create();
         bool result = false;
 
         //act
@@ -106,5 +71,37 @@ public class HomeworkServiceTests
         //assert
         Assert.IsFalse(result);
         Assert.AreEqual("Property has invalid value.", expectedException.Message);
+    }
+
+
+    [TestMethod]
+    public void UpdateHomework_HomeworkIsValid_Success()
+    {
+        // arrange - готуємо вхідні дані для тестування
+        Homework homework = new Homework();
+
+        // act - запускаємо метод для тесту
+        var result = _homeworkService.Update(homework);
+
+        // assert - порівнюємо/валідуємо очікуваний та реальний результат
+        Assert.IsNotNull(homework);
+        _homeworkRepositoryMock.Verify(x => x.Update(It.IsAny<HomeworkDbo>()), Times.Once);
+    }
+
+
+    [TestMethod]
+    public void UpdateHomework_HomeworkIsNull_ThrowException()
+    {
+        // arrange - готуємо вхідні дані для тестування
+        Homework homework = null;
+        bool result = false;
+
+        // act - запускаємо метод для тесту
+        var excpectedException = Assert.ThrowsException<BusinessException>(() => result = _homeworkService.Update(homework));
+
+        // assert - порівнюємо/валідуємо очікуваний та реальний результат
+        Assert.IsNull(homework);
+        Assert.IsNotNull(excpectedException);
+        Assert.AreEqual("Object is null.", excpectedException.Message);
     }
 }
