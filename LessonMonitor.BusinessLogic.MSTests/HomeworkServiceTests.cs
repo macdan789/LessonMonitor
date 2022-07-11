@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
+using FluentAssertions;
 using LessonMonitor.AbstractCore.AbstractRepositories;
 using LessonMonitor.AbstractCore.Models.DBO;
-using LessonMonitor.AbstractCore.Models.DTO;
 using LessonMonitor.AbstractCore.Models.Presentation;
 using LessonMonitor.BusinessLogic.Exceptions;
 using LessonMonitor.BusinessLogic.Services;
@@ -54,6 +54,9 @@ public class HomeworkServiceTests
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.IsNotNull(homework);
         _homeworkRepositoryMock.Verify(x => x.Create(It.IsAny<HomeworkDbo>()), Times.Once);
+
+        //FluentAssertions
+        homework.Should().NotBeNull();
     }
 
 
@@ -71,6 +74,10 @@ public class HomeworkServiceTests
         //assert
         Assert.IsFalse(result);
         Assert.AreEqual("Property has invalid value.", expectedException.Message);
+
+        //FluentAssertions
+        result.Should().BeFalse();
+        expectedException.Should().NotBeNull().And.Match<BusinessException>(x => x.Message == "Property has invalid value.");
     }
 
 
@@ -86,6 +93,9 @@ public class HomeworkServiceTests
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.IsNotNull(homework);
         _homeworkRepositoryMock.Verify(x => x.Update(It.IsAny<HomeworkDbo>()), Times.Once);
+
+        //FluentAssertions
+        homework.Should().NotBeNull();
     }
 
 
@@ -97,11 +107,15 @@ public class HomeworkServiceTests
         bool result = false;
 
         // act - запускаємо метод для тесту
-        var excpectedException = Assert.ThrowsException<BusinessException>(() => result = _homeworkService.Update(homework));
+        var expectedException = Assert.ThrowsException<BusinessException>(() => result = _homeworkService.Update(homework));
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.IsNull(homework);
-        Assert.IsNotNull(excpectedException);
-        Assert.AreEqual("Object is null.", excpectedException.Message);
+        Assert.IsNotNull(expectedException);
+        Assert.AreEqual("Object is null.", expectedException.Message);
+
+        //FluentAssertions
+        homework.Should().BeNull();
+        expectedException.Should().NotBeNull().And.Match<BusinessException>(x => x.Message == "Object is null.");
     }
 }
