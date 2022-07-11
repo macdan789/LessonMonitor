@@ -41,7 +41,7 @@ public class HomeworkServiceTests
 
 
     [TestMethod]
-    public void CreateHomework_HomeworkIsValid_Success()
+    public void Create_HomeworkIsValid_Success()
     {
         // arrange - готуємо вхідні дані для тестування
         //via Constructor
@@ -61,7 +61,7 @@ public class HomeworkServiceTests
 
 
     [TestMethod]
-    public void CreateHomework_HomeworkIsInvalid_ThrowException()
+    public void Create_HomeworkIsInvalid_ThrowException()
     {
         //arrange
         Fixture fixture = new Fixture();
@@ -82,7 +82,7 @@ public class HomeworkServiceTests
 
 
     [TestMethod]
-    public void UpdateHomework_HomeworkIsValid_Success()
+    public void Update_HomeworkIsValid_Success()
     {
         // arrange - готуємо вхідні дані для тестування
         Homework homework = new Homework();
@@ -100,7 +100,7 @@ public class HomeworkServiceTests
 
 
     [TestMethod]
-    public void UpdateHomework_HomeworkIsNull_ThrowException()
+    public void Update_HomeworkIsNull_ThrowException()
     {
         // arrange - готуємо вхідні дані для тестування
         Homework homework = null;
