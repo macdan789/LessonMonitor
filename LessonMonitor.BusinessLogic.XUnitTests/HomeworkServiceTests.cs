@@ -7,7 +7,7 @@ using LessonMonitor.BusinessLogic.Exceptions;
 using LessonMonitor.BusinessLogic.Services;
 using Moq;
 
-namespace LessonMonitor.BusinessLogic.MSTests;
+namespace LessonMonitor.BusinessLogic.XUnitTests;
 
 public class HomeworkServiceTests
 {
