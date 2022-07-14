@@ -16,6 +16,13 @@ public class HomeworkServiceTests
     private readonly HomeworkService _homeworkService;
     private readonly Mock<IHomeworkRepository> _homeworkRepositoryMock;
 
+    public static IEnumerable<object[]> Data => new List<object[]> 
+    { 
+        new object[] { -11 },
+        new object[] { -12 },
+        new object[] { -13 }
+    };
+
     /*
      * Mechanism is creating new instance of Test class for each Test Method in our class,
      * so we have lifetime for instance in scope of one Test Method
@@ -50,13 +57,18 @@ public class HomeworkServiceTests
         homework.Should().NotBeNull();
     }
 
+    //[Fact] = one test case without any method parameters.
+    //[Theory] = can have multiple cases and take method arguments using [InlineData(value)] or [MemberData(nameof(Obj))] and others.
 
-    [Fact]
-    public void Create_HomeworkIsInvalid_ThrowException()
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-255)]
+    [MemberData(nameof(Data))]
+    public void Create_HomeworkIsInvalid_ThrowException(int teacherId)
     {
         //arrange
         Fixture fixture = new Fixture();
-        Homework homework = fixture.Build<Homework>().Without(x => x.TeacherID).Create();
+        Homework homework = fixture.Build<Homework>().With(x => x.TeacherID, teacherId).Create();
         bool result = false;
 
         //act
