@@ -60,12 +60,15 @@ public class HomeworkServiceTests
     }
 
 
-    [TestMethod]
-    public void Create_HomeworkIsInvalid_ThrowException()
+    [DataTestMethod]
+    [DataRow(0)]
+    [DataRow(-10)]
+    [DataRow(-460)]
+    public void Create_HomeworkIsInvalid_ThrowException(int teacherId)
     {
         //arrange
         Fixture fixture = new Fixture();
-        Homework homework = fixture.Build<Homework>().Without(x => x.TeacherID).Create();
+        Homework homework = fixture.Build<Homework>().With(x => x.TeacherID, teacherId).Create();
         bool result = false;
 
         //act

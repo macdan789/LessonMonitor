@@ -18,7 +18,7 @@ public class HomeworkService : IHomeworkService
 
     public bool Create(Homework entity)
     {
-        if (entity.TeacherID == 0 || entity.TeacherID is null || string.IsNullOrEmpty(entity.Title) || string.IsNullOrEmpty(entity.Subject))
+        if (entity.TeacherID <= 0 || entity.TeacherID is null || string.IsNullOrEmpty(entity.Title) || string.IsNullOrEmpty(entity.Subject))
         {
             throw new BusinessException("Property has invalid value.");
         }
