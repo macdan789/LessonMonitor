@@ -1,4 +1,6 @@
-﻿namespace LessonMonitor.AbstractCore.Models.Presentation;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LessonMonitor.AbstractCore.Models.Presentation;
 
 public class Homework
 {
