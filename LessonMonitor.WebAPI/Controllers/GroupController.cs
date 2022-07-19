@@ -1,11 +1,11 @@
 ﻿using LessonMonitor.AbstractCore.AbstractServices;
 using LessonMonitor.AbstractCore.Models.Presentation;
+using LessonMonitor.WebAPI.Contracts.ApiRoutes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LessonMonitor.WebAPI.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
 public class GroupController : Controller
 {
     private readonly IGroupService _service;
@@ -16,10 +16,10 @@ public class GroupController : Controller
     }
 
 
-    [HttpGet("[action]/{groupID}")]
-    public ActionResult<Group> GetGroup(int groupID)
+    [HttpGet(ApiRoutes.Group.Get)]
+    public ActionResult<Group> GetGroup(int groupId)
     {
-        var groupDto = _service.Get(groupID);
+        var groupDto = _service.Get(groupId);
 
         //Mapping
         var result = new Group
