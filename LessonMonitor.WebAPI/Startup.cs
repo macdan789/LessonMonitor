@@ -4,6 +4,7 @@ using LessonMonitor.AbstractCore.ThirdPartyServices.GithubService;
 using LessonMonitor.BusinessLogic.Services;
 using LessonMonitor.BusinessLogic.ThirdPartyService.Github;
 using LessonMonitor.DAL.Repositories;
+using LessonMonitor.WebAPI.Registers.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,16 +26,7 @@ namespace LessonMonitor.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LessonMonitor.WebAPI", Version = "v1" });
-            });
-
-            //Add services to DI
-            AddScoped(services);
-            AddTransient(services);
-            AddSingleton(services);
+            services.RegisterServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,27 +56,6 @@ namespace LessonMonitor.WebAPI
                 endpoints.MapControllers();
             });
 
-        }
-
-        private static void AddScoped(IServiceCollection services)
-        {
-            services.AddSingleton<IGroupRepository, GroupRepository>();
-            services.AddSingleton<IMemberRepository, MemberRepository>();
-            services.AddSingleton<IHomeworkRepository, HomeworkRepository>();
-            services.AddSingleton<ILessonRepository, LessonRepository>();
-        }
-
-        private static void AddTransient(IServiceCollection services)
-        {
-            services.AddTransient<IGithubService, GithubService>();
-        }
-
-        private static void AddSingleton(IServiceCollection services)
-        {
-            services.AddScoped<IGroupService, GroupService>();
-            services.AddScoped<IMemberService, MemberService>();
-            services.AddScoped<IHomeworkService, HomeworkService>();
-            services.AddScoped<ILessonService, LessonService>();
         }
     }
 }
