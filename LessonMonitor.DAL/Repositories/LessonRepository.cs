@@ -1,11 +1,11 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepositories;
-using LessonMonitor.AbstractCore.Models.DBO;
+using LessonMonitor.AbstractCore.Models.DTO;
 
 namespace LessonMonitor.DAL.Repositories;
 
 public class LessonRepository : ILessonRepository
 {
-    public bool Create(LessonDbo entity)
+    public bool Create(LessonDto entity)
     {
         throw new NotImplementedException();
     }
@@ -15,17 +15,17 @@ public class LessonRepository : ILessonRepository
         throw new NotImplementedException();
     }
 
-    public LessonDbo Get(int entityID)
+    public LessonDto Get(int entityID)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<LessonDbo> GetAll()
+    public IEnumerable<LessonDto> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public bool Update(LessonDbo entity)
+    public bool Update(LessonDto entity)
     {
         throw new NotImplementedException();
     }

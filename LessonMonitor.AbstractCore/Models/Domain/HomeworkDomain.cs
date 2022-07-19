@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.AbstractCore.Models.DBO;
+﻿namespace LessonMonitor.AbstractCore.Models.Domain;
 
-public class HomeworkDbo
+public class HomeworkDomain
 {
     public string Title { get; set; }
     public string Subject { get; set; }

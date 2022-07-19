@@ -1,8 +1,8 @@
-﻿using LessonMonitor.AbstractCore.Models.DBO;
+﻿using LessonMonitor.AbstractCore.Models.DTO;
 
 namespace LessonMonitor.AbstractCore.AbstractRepositories;
 
-public interface IMemberRepository : IRepository<MemberDbo>
+public interface IMemberRepository : IRepository<MemberDto>
 {
 
 }

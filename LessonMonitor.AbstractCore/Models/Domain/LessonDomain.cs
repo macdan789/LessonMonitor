@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.AbstractCore.Models.DBO;
+﻿namespace LessonMonitor.AbstractCore.Models.Domain;
 
-public class LessonDbo
+public class LessonDomain
 {
     public int LessonID { get; set; }
     public string LessonName { get; set; }

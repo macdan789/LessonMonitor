@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using FluentAssertions;
 using LessonMonitor.AbstractCore.AbstractRepositories;
-using LessonMonitor.AbstractCore.Models.DBO;
+using LessonMonitor.AbstractCore.Models.DTO;
 using LessonMonitor.AbstractCore.Models.Presentation;
 using LessonMonitor.BusinessLogic.Exceptions;
 using LessonMonitor.BusinessLogic.Services;
@@ -51,7 +51,7 @@ public class HomeworkServiceTests
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.NotNull(homework);
-        _homeworkRepositoryMock.Verify(x => x.Create(It.IsAny<HomeworkDbo>()), Times.Once);
+        _homeworkRepositoryMock.Verify(x => x.Create(It.IsAny<HomeworkDto>()), Times.Once);
 
         //FluentAssertions
         homework.Should().NotBeNull();
@@ -95,7 +95,7 @@ public class HomeworkServiceTests
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.NotNull(homework);
-        _homeworkRepositoryMock.Verify(x => x.Update(It.IsAny<HomeworkDbo>()), Times.Once);
+        _homeworkRepositoryMock.Verify(x => x.Update(It.IsAny<HomeworkDto>()), Times.Once);
 
         //FluentAssertions
         homework.Should().NotBeNull();

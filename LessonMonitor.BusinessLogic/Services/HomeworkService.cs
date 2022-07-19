@@ -1,6 +1,5 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepositories;
 using LessonMonitor.AbstractCore.AbstractServices;
-using LessonMonitor.AbstractCore.Models.DBO;
 using LessonMonitor.AbstractCore.Models.DTO;
 using LessonMonitor.AbstractCore.Models.Presentation;
 using LessonMonitor.BusinessLogic.Exceptions;
@@ -29,7 +28,7 @@ public class HomeworkService : IHomeworkService
         //Do some business logic about model
 
         //Mapping from dto to dbo
-        HomeworkDbo homeworkDbo = new HomeworkDbo();
+        HomeworkDto homeworkDbo = new HomeworkDto();
 
         bool isCreated = _repository.Create(homeworkDbo);  
 
@@ -64,7 +63,7 @@ public class HomeworkService : IHomeworkService
         //Do some business logic about model
 
         //Mapping from dto to dbo
-        HomeworkDbo homeworkDbo = new HomeworkDbo();
+        HomeworkDto homeworkDbo = new HomeworkDto();
 
         bool isUpdated = _repository.Update(homeworkDbo);
 

@@ -1,6 +1,6 @@
-﻿namespace LessonMonitor.AbstractCore.Models.DBO;
+﻿namespace LessonMonitor.AbstractCore.Models.Domain;
 
-public class GroupDbo
+public class GroupDomain
 {
     public int GroupID { get; set; }
     public string GroupName { get; set; }
