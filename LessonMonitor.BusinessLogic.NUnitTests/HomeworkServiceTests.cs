@@ -14,8 +14,8 @@ public class HomeworkServiceTests
     private Guid _guidSetUp;
     private Guid _guidCtor;
 
-    private HomeworkService _homeworkService;
-    private Mock<IHomeworkRepository> _homeworkRepositoryMock;
+    private HomeworkService _service;
+    private Mock<IHomeworkRepository> _mockRepository;
 
 
     public HomeworkServiceTests()
@@ -31,8 +31,8 @@ public class HomeworkServiceTests
         Console.WriteLine($"{_guidSetUp} SetUp");
 
         //arrange - всі загальні компоненти для тестів виносимо у [SetUp] метод
-        _homeworkRepositoryMock = new Mock<IHomeworkRepository>();
-        _homeworkService = new HomeworkService(_homeworkRepositoryMock.Object);
+        _mockRepository = new Mock<IHomeworkRepository>();
+        _service = new HomeworkService(_mockRepository.Object);
     }
 
 
@@ -45,11 +45,11 @@ public class HomeworkServiceTests
         Homework homework = fixture.Build<Homework>().Create();
 
         // act - запускаємо метод для тесту
-        var result = _homeworkService.Create(homework);
+        var result = _service.Create(homework);
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.That(homework, Is.Not.Null);
-        _homeworkRepositoryMock.Verify(x => x.Create(It.IsAny<HomeworkDto>()), Times.Once);
+        _mockRepository.Verify(x => x.Create(It.IsAny<HomeworkDto>()), Times.Once);
 
         //FluentAssertions
         homework.Should().NotBeNull();
@@ -67,7 +67,7 @@ public class HomeworkServiceTests
         bool result = false;
 
         //act
-        var expectedException = Assert.Throws<BusinessException>(() => result = _homeworkService.Create(homework));
+        var expectedException = Assert.Throws<BusinessException>(() => result = _service.Create(homework));
 
         //assert
         Assert.That(result, Is.False);
@@ -86,11 +86,11 @@ public class HomeworkServiceTests
         Homework homework = new Homework();
 
         // act - запускаємо метод для тесту
-        var result = _homeworkService.Update(homework);
+        var result = _service.Update(homework);
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.That(homework, Is.Not.Null);
-        _homeworkRepositoryMock.Verify(x => x.Update(It.IsAny<HomeworkDto>()), Times.Once);
+        _mockRepository.Verify(x => x.Update(It.IsAny<HomeworkDto>()), Times.Once);
 
         //FluentAssertions
         homework.Should().NotBeNull();
@@ -105,7 +105,7 @@ public class HomeworkServiceTests
         bool result = false;
 
         // act - запускаємо метод для тесту
-        var expectedException = Assert.Throws<BusinessException>(() => result = _homeworkService.Update(homework));
+        var expectedException = Assert.Throws<BusinessException>(() => result = _service.Update(homework));
 
         // assert - порівнюємо/валідуємо очікуваний та реальний результат
         Assert.That(homework, Is.Null);

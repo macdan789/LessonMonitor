@@ -1,16 +1,9 @@
-using LessonMonitor.AbstractCore.AbstractRepositories;
-using LessonMonitor.AbstractCore.AbstractServices;
-using LessonMonitor.AbstractCore.ThirdPartyServices.GithubService;
-using LessonMonitor.BusinessLogic.Services;
-using LessonMonitor.BusinessLogic.ThirdPartyService.Github;
-using LessonMonitor.DAL.Repositories;
 using LessonMonitor.WebAPI.Registers.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace LessonMonitor.WebAPI
 {

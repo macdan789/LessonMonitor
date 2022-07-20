@@ -3,7 +3,7 @@ using LessonMonitor.AbstractCore.Models.Presentation;
 using LessonMonitor.WebAPI.Contracts.ApiRoutes;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LessonMonitor.WebAPI.Controllers;
+namespace LessonMonitor.WebAPI.Controllers.V1;
 
 [ApiController]
 public class GroupController : Controller
@@ -19,17 +19,6 @@ public class GroupController : Controller
     [HttpGet(ApiRoutes.Group.Get)]
     public ActionResult<Group> GetGroup(int groupId)
     {
-        var groupDto = _service.Get(groupId);
-
-        //Mapping
-        var result = new Group
-        {
-            GroupID = groupDto.GroupID,
-            GroupName = groupDto.GroupName,
-            MemberCount = groupDto.MemberCount,
-            CuratorID = groupDto.CuratorID
-        };
-
-        return Ok(result);
+        return Ok();
     }
 }

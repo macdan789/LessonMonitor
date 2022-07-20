@@ -1,8 +1,6 @@
 ﻿using LessonMonitor.AbstractCore.AbstractRepositories;
 using LessonMonitor.AbstractCore.AbstractServices;
-using LessonMonitor.AbstractCore.ThirdPartyServices.GithubService;
 using LessonMonitor.BusinessLogic.Services;
-using LessonMonitor.BusinessLogic.ThirdPartyService.Github;
 using LessonMonitor.DAL.Repositories;
 using LessonMonitor.WebAPI.Registers.Abstract;
 using Microsoft.Extensions.Configuration;
@@ -29,7 +27,6 @@ internal class BusinessRegister : IRegister
 
         //Add services to DI mechanism
         AddScoped(services);
-        AddTransient(services);
         AddSingleton(services);
     }
 
@@ -40,11 +37,6 @@ internal class BusinessRegister : IRegister
         services.AddSingleton<IMemberRepository, MemberRepository>();
         services.AddSingleton<IHomeworkRepository, HomeworkRepository>();
         services.AddSingleton<ILessonRepository, LessonRepository>();
-    }
-
-    private static void AddTransient(IServiceCollection services)
-    {
-        services.AddTransient<IGithubService, GithubService>();
     }
 
     private static void AddSingleton(IServiceCollection services)

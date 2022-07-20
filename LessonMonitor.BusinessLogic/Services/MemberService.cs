@@ -25,7 +25,20 @@ public class MemberService : IMemberService
 
     public Member Get(int entityID)
     {
-        throw new NotImplementedException();
+        if(entityID > 0 && entityID <= 1000)
+        {
+            return new Member
+            {
+                GroupID = entityID,
+                MemberID = entityID,
+                Age = 20,
+                EmailAddress = "temptest@edu.com",
+                FirstName = "FirstName",
+                LastName = "LastName"
+            };
+        }
+
+        return null;
     }
 
     public IEnumerable<Member> GetAll()
