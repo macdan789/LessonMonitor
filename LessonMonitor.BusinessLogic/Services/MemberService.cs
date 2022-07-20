@@ -25,7 +25,7 @@ public class MemberService : IMemberService
 
     public Member Get(int entityID)
     {
-        if(entityID > 0 && entityID <= 1000)
+        if (entityID > 0 && entityID <= 1000)
         {
             return new Member
             {

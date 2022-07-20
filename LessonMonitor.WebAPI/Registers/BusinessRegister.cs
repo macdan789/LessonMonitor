@@ -18,9 +18,9 @@ internal class BusinessRegister : IRegister
         //Swagger setup
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo 
-            { 
-                Title = "LessonMonitor.WebAPI", 
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "LessonMonitor.WebAPI",
                 Version = "v1"
             });
         });

@@ -1,14 +1,8 @@
 ﻿using FluentAssertions;
 using LessonMonitor.AbstractCore.AbstractRepositories;
 using LessonMonitor.AbstractCore.Models.Presentation;
-using LessonMonitor.BusinessLogic.Exceptions;
 using LessonMonitor.BusinessLogic.Services;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LessonMonitor.BusinessLogic.NUnitTests;
 

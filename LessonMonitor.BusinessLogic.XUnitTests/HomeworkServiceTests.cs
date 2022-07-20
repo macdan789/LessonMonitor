@@ -16,8 +16,8 @@ public class HomeworkServiceTests
     private readonly HomeworkService _homeworkService;
     private readonly Mock<IHomeworkRepository> _homeworkRepositoryMock;
 
-    public static IEnumerable<object[]> Data => new List<object[]> 
-    { 
+    public static IEnumerable<object[]> Data => new List<object[]>
+    {
         new object[] { -11 },
         new object[] { -12 },
         new object[] { -13 }

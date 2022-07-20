@@ -17,12 +17,12 @@ public class RequestLogMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        await File.AppendAllLinesAsync("LogFile.log", 
+        await File.AppendAllLinesAsync("LogFile.log",
             new string[] { $"{DateTime.Now}[Request]{context.Request.Path}" });
 
         await _next(context);
 
-        await File.AppendAllLinesAsync("LogFile.log", 
+        await File.AppendAllLinesAsync("LogFile.log",
             new string[] { $"{DateTime.Now}[Response]{context.Request.Path} Status:{context.Response.StatusCode}" });
     }
 }

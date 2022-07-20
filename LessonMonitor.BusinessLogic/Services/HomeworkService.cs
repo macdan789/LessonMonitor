@@ -30,7 +30,7 @@ public class HomeworkService : IHomeworkService
         //Mapping from dto to dbo
         HomeworkDto homeworkDbo = new HomeworkDto();
 
-        bool isCreated = _repository.Create(homeworkDbo);  
+        bool isCreated = _repository.Create(homeworkDbo);
 
         return isCreated;
     }
@@ -52,7 +52,7 @@ public class HomeworkService : IHomeworkService
 
     public bool Update(Homework entity)
     {
-        if(entity is null)
+        if (entity is null)
         {
             throw new BusinessException("Object is null.");
         }
